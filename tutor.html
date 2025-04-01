@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Tool - Tutor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="dashboard.html" class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-arrow-left mr-2"></i>
+          </a>
+          <span class="text-xl font-bold text-gray-900">AI Tutor</span>
+        </div>
+        <div class="flex items-center">
+          <span class="text-sm font-medium text-gray-500">Available 24/7</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+      <!-- Chat Messages Container -->
+      <div id="chatContainer" class="h-96 p-4 overflow-y-auto space-y-4">
+        <!-- AI Welcome Message -->
+        <div class="flex items-start">
+          <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+            <i class="fas fa-robot text-blue-600"></i>
+          </div>
+          <div class="ml-3">
+            <div class="bg-blue-50 rounded-lg p-3">
+              <p class="text-sm text-gray-800">Hello! I'm your AI tutor. Ask me anything about your studies, and I'll do my best to explain it clearly.</p>
+            </div>
+            <p class="mt-1 text-xs text-gray-500">Just now</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="border-t border-gray-200 p-4">
+        <div class="flex space-x-2">
+          <input 
+            id="messageInput" 
+            type="text" 
+            placeholder="Type your question here..." 
+            class="flex-1 min-w-0 block w-full px-3 py-2 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          >
+          <button 
+            id="sendButton" 
+            class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Send
+          </button>
+        </div>
+        <div class="mt-2 flex space-x-2">
+          <button class="inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-camera mr-1"></i> Upload Image
+          </button>
+          <button class="inline-flex items-center px-3 py-1 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <i class="fas fa-microphone mr-1"></i> Voice Input
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="scripts.js"></script>
+  <script>
+    document.getElementById('sendButton').addEventListener('click', sendMessage);
+    document.getElementById('messageInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    async function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Add user message to chat
+      addMessageToChat(message, 'user');
+      input.value = '';
+
+      // Show loading indicator
+      const loadingId = addLoadingIndicator();
+
+      // In a real implementation, this would call the AI tutor API
+      setTimeout(() => {
+        // Remove loading indicator
+        document.getElementById(loadingId).remove();
+        
+        // Simulate AI response
+        const responses = [
+          "To solve this problem, you'll need to first identify the variables and then apply the quadratic formula.",
+          "The key concept here is understanding how the distributive property works in algebraic equations.",
+          "This is a common mistake! Remember that when dividing exponents with the same base, you subtract the powers."
+        ];
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        addMessageToChat(randomResponse, 'ai');
+      }, 1500);
+    }
+
+    function addMessageToChat(message, sender) {
+      const chatContainer = document.getElementById('chatContainer');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'flex items-start';
+      
+      if (sender === 'user') {
+        messageDiv.innerHTML = `
+          <div class="ml-auto max-w-xs lg:max-w-md">
+            <div class="bg-blue-600 rounded-lg p-3">
+              <p class="text-sm text-white">${message}</p>
+            </div>
+            <p class="mt-1 text-xs text-gray-500 text-right">Just now</p>
+          </div>
+        `;
+      } else {
+        messageDiv.innerHTML = `
+          <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+            <i class="fas fa-robot text-blue-600"></i>
+          </div>
+          <div class="ml-3 max-w-xs lg:max-w-md">
+            <div class="bg-blue-50 rounded-lg p-3">
+              <p class="text-sm text-gray-800">${message}</p>
+            </div>
+            <p class="mt-1 text-xs text-gray-500">Just now</p>
+          </div>
+        `;
+      }
+      
+      chatContainer.appendChild(messageDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+
+    function addLoadingIndicator() {
+      const chatContainer = document.getElementById('chatContainer');
+      const loadingDiv = document.createElement('div');
+      const loadingId = 'loading-' + Date.now();
+      loadingDiv.id = loadingId;
+      loadingDiv.className = 'flex items-start';
+      loadingDiv.innerHTML = `
+        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+          <i class="fas fa-robot text-blue-600"></i>
+        </div>
+        <div class="ml-3">
+          <div class="bg-blue-50 rounded-lg p-3 w-32">
+            <div class="flex space-x-1">
+              <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce"></div>
+              <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+              <div class="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
+            </div>
+          </div>
+        </div>
+      `;
+      chatContainer.appendChild(loadingDiv);
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+      return loadingId;
+    }
+  </script>
+</body>
+</html>
