@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Study Tool - Study Plan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="dashboard.html" class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-arrow-left mr-2"></i>
+          </a>
+          <span class="text-xl font-bold text-gray-900">Your Study Plan</span>
+        </div>
+        <div class="flex items-center">
+          <span class="text-sm font-medium text-gray-500">Updated today</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-3xl mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="bg-white shadow rounded-lg overflow-hidden mb-6">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-medium text-gray-900">Priority Areas</h2>
+        <p class="mt-1 text-sm text-gray-500">Based on your recent performance</p>
+      </div>
+      <div class="divide-y divide-gray-200">
+        <!-- Priority Item 1 -->
+        <div class="px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-red-100 flex items-center justify-center">
+                <i class="fas fa-exclamation-triangle text-red-600"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-sm font-medium text-gray-900">Quadratic Equations</h3>
+                <p class="text-sm text-gray-500">Accuracy: 45% (Needs Work)</p>
+              </div>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+              <button class="ml-2 inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Start Practice
+              </button>
+            </div>
+          </div>
+          <div class="mt-4">
+            <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wider">Recommended Resources</h4>
+            <ul class="mt-2 space-y-2">
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-5 w-5 text-blue-500">
+                  <i class="fas fa-video"></i>
+                </div>
+                <p class="ml-2 text-sm text-gray-700">
+                  <a href="#" class="text-blue-600 hover:text-blue-800">Introduction to Quadratic Equations (Khan Academy)</a>
+                </p>
+              </li>
+              <li class="flex items-start">
+                <div class="flex-shrink-0 h-5 w-5 text-blue-500">
+                  <i class="fas fa-file-alt"></i>
+                </div>
+                <p class="ml-2 text-sm text-gray-700">
+                  <a href="#" class="text-blue-600 hover:text-blue-800">Quadratic Formula Cheat Sheet</a>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Priority Item 2 -->
+        <div class="px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
+                <i class="fas fa-hourglass-half text-yellow-600"></i>
+              </div>
+              <div class="ml-4">
+                <h3 class="text-sm font-medium text-gray-900">Trigonometric Identities</h3>
+                <p class="text-sm text-gray-500">Accuracy: 65% (Improving)</p>
+              </div>
+            </div>
+            <div class="ml-4 flex-shrink-0 flex">
+              <button class="ml-2 inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                Start Practice
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weekly Plan -->
+    <div class="bg-white shadow rounded-lg overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-medium text-gray-900">Weekly Study Schedule</h2>
+        <p class="mt-1 text-sm text-gray-500">Personalized for your learning pace</p>
+      </div>
+      <div class="divide-y divide-gray-200">
+        <!-- Day 1 -->
+        <div class="px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-medium text-gray-900">Monday</h3>
+              <p class="text-sm text-gray-500">30 minutes</p>
+            </div>
+            <div class="flex items-center">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                Active
+              </span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="text-sm text-gray-700">• Quadratic Equations Practice (15 min)</p>
+            <p class="text-sm text-gray-700">• Trigonometry Review (15 min)</p>
+          </div>
+        </div>
+
+        <!-- Day 2 -->
+        <div class="px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-sm font-medium text-gray-900">Tuesday</h3>
+              <p class="text-sm text-gray-500">20 minutes</p>
+            </div>
+            <div class="flex items-center">
+              <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                Upcoming
+              </span>
+            </div>
+          </div>
+          <div class="mt-2">
+            <p class="text-sm text-gray-700">• Quadratic Equations Quiz (20 min)</p>
+          </div>
+        </div>
+
+        <!-- Progress Tracking -->
+        <div class="px-6 py-4 bg-gray-50">
+          <h3 class="text-sm font-medium text-gray-900">Weekly Progress</h3>
+          <div class="mt-2">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs font-medium text-gray-500">Completed</span>
+              <span class="text-xs font-medium text-blue-600">1/7 days</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+              <div class="bg-blue-600 h-2 rounded-full" style="width: 14%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
